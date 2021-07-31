@@ -13,8 +13,20 @@ upBtn.addEventListener('click', () => {
 })
 
 upBtn.addEventListener('click', () => {
+    changeSlide('up')
+})
+downBtn.addEventListener('click', () => {
     changeSlide('down')
 })
+
+document.addEventListener('keydown',
+    event => {
+        if (event.key === 'ArrowUp') {
+            changeSlide('up')
+        } else if (event.key === 'ArrowDown') {
+            changeSlide('down')
+        }
+    })
 
 function changeSlide(direction) {
     if (direction === 'up') {
@@ -23,6 +35,7 @@ function changeSlide(direction) {
             activeSlideIndex = 0
         }
     } else if (direction === 'down') {
+        activeSlideIndex--
         if (activeSlideIndex < 0) {
             activeSlideIndex = slidesCount - 1
         }
